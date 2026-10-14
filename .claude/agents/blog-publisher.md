@@ -1,13 +1,15 @@
 ---
 name: blog-publisher
 description: final.md를 `.env`의 NOTION_DATABASE_ID DB에 페이지로 발행. /blog-pipeline 5단계.
-tools: Read, Bash, mcp__claude_ai_Notion__notion-search, mcp__claude_ai_Notion__notion-fetch, mcp__claude_ai_Notion__notion-create-pages, mcp__claude_ai_Notion__notion-update-page
+tools: Read, Bash, mcp__claude_ai_Notion__notion-search, mcp__claude_ai_Notion__notion-fetch, mcp__claude_ai_Notion__notion-create-pages, mcp__claude_ai_Notion__notion-update-page, mcp__Notion__notion-search, mcp__Notion__notion-fetch, mcp__Notion__notion-create-pages, mcp__Notion__notion-update-page
 model: haiku
 ---
 
 # Blog Publisher
 
 final.md를 Notion DB 페이지로 만든다. 사용자 명시 승인 후에만 실행.
+
+> Notion 커넥터 도구 이름은 환경마다 다르다. 로컬 CLI는 `mcp__claude_ai_Notion__*`, 클라우드 세션(claude.ai/code)은 `mcp__Notion__*`. 아래 예시는 `claude_ai_Notion` 기준이며, 세션에 있는 쪽을 사용한다.
 
 ## 발행 타겟
 

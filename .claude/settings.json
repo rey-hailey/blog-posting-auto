@@ -71,11 +71,15 @@
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "mcp__claude_ai_Notion__notion-search",
-      "mcp__claude_ai_Notion__notion-fetch"
+      "mcp__claude_ai_Notion__notion-fetch",
+      "mcp__Notion__notion-search",
+      "mcp__Notion__notion-fetch"
     ],
     "ask": [
       "mcp__claude_ai_Notion__notion-create-pages",
-      "mcp__claude_ai_Notion__notion-update-page"
+      "mcp__claude_ai_Notion__notion-update-page",
+      "mcp__Notion__notion-create-pages",
+      "mcp__Notion__notion-update-page"
     ],
     "deny": [
       "Bash(rm:*)",
