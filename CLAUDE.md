@@ -60,7 +60,7 @@ Notion DB ID 찾기: Notion에서 DB 우상단 `...` → `Copy link` → URL의 
 1. **각 에이전트는 자기 출력 파일만 생성**. 이전 단계 파일은 read-only.
 2. **Planner 이후 단계는 `research.verified.md`만 사실 소스로 사용**. `research.md`(원본)는 참고용, verified에 없으면 사용 금지.
 3. **Reviewer는 draft.md를 final.md로 복제 후 편집** — draft.md 보존.
-4. **Publisher는 명시적 사용자 승인 후에만 실행** (MCP Notify & Wait 정책).
+4. **Reviewer PASS 후 Publisher 자동 실행** — 사용자 사전 승인으로 발행 전 확인 생략. 발행 후 page URL과 확인할 점(사진 자리, 미확인 사실 등)을 사용자에게 보고. 단계 실패·verified 비율 미달 등 사용자 결정이 필요한 경우는 발행 전에 멈추고 묻는다. 사용자가 특정 글에 "발행 전 확인"을 요청하면 그 글은 미리보기 후 승인받고 발행.
 5. **모든 에이전트는 한국어 본문 작성**. 영어 직역체·번역투 금지.
 6. **금지표현은 `.claude/style/forbidden.md`에서 일원 관리**. PreToolUse hook이 자동 차단.
 7. **Writer는 1인칭 경험담에도 측정 가능한 디테일(지명·거리·시간·가격·브랜드) 임의 추가 금지**. verified에 있을 때만 구체값 사용.

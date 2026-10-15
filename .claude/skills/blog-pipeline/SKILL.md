@@ -109,28 +109,25 @@ draft.md → final.md. 5단계 검사 통과시키기.
 
 검증: `final.md` 존재 + 끝에 `<!-- reviewer: PASS / ... / UNVERIFIED K건 모호화 -->` 코멘트.
 
-### 5. Publisher (명시 승인 후)
+### 5. Publisher (Reviewer PASS 후 자동)
 
-오케스트레이터가 사용자에게 미리보기 1줄 보여주고 명시 OK 받기:
-
-```
-제목: {제목}
-대상: Notion DB ({NOTION_DATABASE_ID})
-태그: {N개}
-발행할까요?
-```
-
-OK 받으면:
+Reviewer PASS + 오케스트레이터 검증 통과 시 승인 확인 없이 바로 발행 (CLAUDE.md 규칙 4). 사용자가 해당 글에 "발행 전 확인"을 요청한 경우만 미리보기 후 승인받기.
 
 ```
 Agent(subagent_type="blog-publisher", prompt=<<<
 RUN_ID: {RUN_ID}
 
-final.md를 NOTION_DATABASE_ID DB에 발행.
+final.md를 NOTION_DATABASE_ID DB에 발행. (CLAUDE.md 규칙 4에 따른 자동 발행)
 >>>)
 ```
 
-검증: `meta.json.page_url` 존재.
+검증: `meta.json.page_url` 존재. 발행 후 사용자에게 보고:
+
+```
+발행 완료: {page URL}
+제목: {제목}
+확인할 점: {사진 자리 / 미확인 사실 / verified 비율 등}
+```
 
 ## 산출물 디렉토리
 
@@ -151,7 +148,7 @@ workspace/{RUN_ID}/
 - **단계 실패 시 다음 단계로 진행 금지**. 사용자에게 사유 보고 후 재시도/스킵 선택권.
 - **단계 간 결과물 검증은 오케스트레이터 책임**. 서브에이전트 자체 평가 신뢰하지 말 것.
 - **Fact-Checker verified 비율 < 50% 시 Researcher 재호출** (최대 2회). 그래도 미달이면 사용자 결정.
-- **Publisher는 항상 사용자 명시 승인 후에만 호출**.
+- **Publisher는 Reviewer PASS 후 자동 호출**. 발행 후 page URL과 확인할 점 보고.
 - **Reviewer 실패 시**: 사유 보고 → Writer 재호출 (최대 2회) → 그래도 실패면 사용자에게 결정 요청.
 
 ## 참고

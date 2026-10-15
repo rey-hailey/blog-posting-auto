@@ -69,10 +69,10 @@ https://www.notion.so/your-workspace/My-DB-abcdef0123456789abcdef0123456789
 
 1. `workspace/{YYYYMMDD-HHMMSS-slug}/` 디렉토리 생성
 2. 6단계 직렬 실행, 단계별 검증
-3. 최종 발행 직전 사용자에게 미리보기 1줄 보여주고 명시 OK 받기
-4. OK 받으면 Notion DB에 Draft 페이지 생성
+3. Reviewer PASS 후 Notion DB에 페이지 자동 생성
+4. 발행된 page URL과 확인할 점(사진 자리, 미확인 사실 등) 보고
 
-발행 단계는 **항상 명시 승인 필요**. 자동 발행 금지 (외부 노출 작업은 사용자 확인 필수).
+발행은 Reviewer PASS 후 자동으로 진행 (CLAUDE.md 규칙 4). 단계 실패나 검증 비율 미달처럼 판단이 필요하면 발행 전에 멈추고 묻는다. 특정 글을 발행 전에 보고 싶으면 "발행 전 확인"이라고 요청.
 
 ## 디렉토리 구조
 
@@ -129,7 +129,7 @@ https://www.notion.so/your-workspace/My-DB-abcdef0123456789abcdef0123456789
 1. 각 에이전트는 자기 출력 파일만 생성. 이전 단계 파일은 read-only.
 2. Planner 이후 단계는 `research.verified.md`만 사실 소스로 사용. `research.md`(원본)는 참고용.
 3. Reviewer는 draft.md를 final.md로 복제 후 편집 — draft.md 보존.
-4. Publisher는 명시적 사용자 승인 후에만 실행.
+4. Publisher는 Reviewer PASS 후 자동 실행. 판단이 필요한 경우만 발행 전에 멈추고 묻는다.
 5. 모든 에이전트는 한국어 본문 작성. 영어 직역체·번역투 금지.
 6. Writer는 1인칭 경험담에도 측정 가능한 디테일(지명·거리·시간·가격·브랜드) 임의 추가 금지. verified에 있을 때만 구체값 사용.
 7. 모든 자료 조사·검증은 실행 날짜 기준. time-sensitive 사실은 출처 12개월 초과면 stale-source로 reject.
