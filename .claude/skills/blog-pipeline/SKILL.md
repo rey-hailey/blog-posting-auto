@@ -31,6 +31,9 @@ description: 주제 또는 키워드를 받아 한국어 블로그 글 한 편�
    }
    ```
 3. `.env` 존재 + `NOTION_DATABASE_ID` 채워졌는지 확인. 없으면 사용자에게 알리고 Publisher 단계는 skip 옵션 안내.
+4. **`POST_TYPE` 분류** (`daily` 일상글 / `info` 정보글) — 기준은 `.claude/style/daily.md` "분류 기준". 사용자가 겪은 일이 중심이면 `daily`, 주제 자체를 설명·정리·비교하면 `info`. 애매하면 `daily`. `meta.json`에 `"post_type"` 기록, 이후 모든 서브에이전트 prompt에 `POST_TYPE: {값}` 전달.
+   - `daily`이면 사용자 입력의 경험 서술을 Researcher prompt에 "사용자 제공 1차 경험" 섹션으로 그대로 넘기고(각색 금지), Fact-Checker는 그 섹션을 검증 면제·비율 계산 제외로 처리. 웹 조사는 이야기에 붙일 배경 사실만(병원명·제도·일정 등).
+   - `daily` 글은 Planner·Writer·Reviewer가 `.claude/style/daily.md`를 우선 적용 (추천/SEO 섹션·3박자 훅·이모지 소제목 없음, 시간 순 이야기).
 
 ### 1. Researcher
 
@@ -78,7 +81,7 @@ research.md는 참고만, verified에 없는 사실은 절대 사용 금지.
 >>>)
 ```
 
-검증: `plan.md` 존재 + 섹션 5개 이상.
+검증: `plan.md` 존재 + 섹션 5개 이상 (`daily`는 장면 흐름 3개 이상, 소제목 0~3개).
 
 ### 3. Writer
 
@@ -150,6 +153,7 @@ workspace/{RUN_ID}/
 - **Fact-Checker verified 비율 < 50% 시 Researcher 재호출** (최대 2회). 그래도 미달이면 사용자 결정.
 - **Publisher는 Reviewer PASS 후 자동 호출**. 발행 후 page URL과 확인할 점 보고.
 - **Reviewer 실패 시**: 사유 보고 → Writer 재호출 (최대 2회) → 그래도 실패면 사용자에게 결정 요청.
+- **`daily` 글은 오케스트레이터도 final.md를 한 번 더 확인**: 추천/SEO 섹션, "결론부터", 이모지 소제목, 사용자 메모에 없는 장면·감정이 남아 있으면 발행 전에 제거.
 
 ## 참고
 

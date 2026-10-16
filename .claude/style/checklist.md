@@ -2,6 +2,8 @@
 
 Reviewer가 final.md 확정 직전 자체 평가. 모두 PASS 못 하면 final.md 생성 보류.
 
+> **정보글(`POST_TYPE=info`) 기준**. 일상글(`daily`)은 구조·가독성 헤더·SEO 항목 대신 `daily.md`의 "Reviewer 체크 (daily)"를 쓴다. 톤·사실·금지표현 항목은 공통.
+
 ## 구조 (Structure)
 
 - [ ] 첫 줄 친숙 미끼 + 자격지움 + 시간보장 3박자 있다

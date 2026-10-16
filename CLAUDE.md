@@ -66,6 +66,7 @@ Notion DB ID 찾기: Notion에서 DB 우상단 `...` → `Copy link` → URL의 
 7. **Writer는 1인칭 경험담에도 측정 가능한 디테일(지명·거리·시간·가격·브랜드) 임의 추가 금지**. verified에 있을 때만 구체값 사용.
 8. **Fact-Checker verified 비율 < 50%면 Researcher 재실행 신호**. Planner 진입 금지.
 9. **모든 자료 조사·검증은 실행 날짜 기준** — 오케스트레이터가 `TODAY` 변수를 Researcher·Fact-Checker prompt에 전달. SessionStart + UserPromptSubmit hook이 컨텍스트에 날짜 자동 주입. Researcher는 쿼리에 최신성 키워드(`YEAR`, "최신") 강제, Fact-Checker는 time-sensitive 주장 출처 12개월 초과면 `stale-source` 카테고리로 reject.
+10. **글 유형 2가지** — 오케스트레이터가 시작 시 `POST_TYPE`을 `daily`(일상글: 직접 겪은 일 중심) / `info`(정보글: 주제 설명·정리·비교)로 분류해 모든 에이전트에 전달. `daily`는 `.claude/style/daily.md` 우선 적용: 다정한 존댓말로 시간 순 이야기, 소제목 0~3개(이모지 없음), "이런 분들께 추천"·SEO 섹션·3박자 훅·결론 재진술 없음. `info`는 기존 voice/readability/checklist 구조 유지.
 
 ## 사용
 

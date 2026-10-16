@@ -33,9 +33,10 @@ cat <<EOF
 - 톤: .claude/style/voice.md
 - 가독성: .claude/style/readability.md
 - 금지표현: .claude/style/forbidden.md (+ forbidden.patterns)
-- 체크리스트: .claude/style/checklist.md
+- 체크리스트: .claude/style/checklist.md (정보글)
+- 일상글 모드: .claude/style/daily.md (POST_TYPE=daily일 때 구조 규칙 우선)
 
 블로그 글 자동화 트리거: /blog-pipeline <주제>
 워크스페이스: workspace/{run_id}/
-Notion 발행은 반드시 사용자 명시 OK 후 실행.
+Notion 발행은 Reviewer PASS 후 자동 (CLAUDE.md 규칙 4). 판단이 필요한 경우만 발행 전에 묻기.
 EOF

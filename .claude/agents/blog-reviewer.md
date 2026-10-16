@@ -59,7 +59,9 @@ Writer의 초안을 사람이 발행해도 될 수준으로 다듬는다. 최종
    - 결론 두 번 박치기 확인 (도입 한 줄 결론 + 총평 재진술).
    - 사진 placeholder 섹션당 1개 이하.
 
-3. **수정 후 checklist.md 항목 자체 평가**, 모두 PASS 시 final.md 확정.
+   **POST_TYPE=daily이면 (e) 대신**: `.claude/style/daily.md`의 "Reviewer 체크 (daily)"로 검사. 추천/SEO 섹션·3박자 훅·"결론부터"·이모지 소제목·`---` 남발이 있으면 제거하고, 정보 나열이 섹션으로 빠져 있으면 이야기 속 문장으로 녹인다. 사용자 메모에 없는 장면·감정·대사는 삭제. 문단 2~4문장 허용.
+
+3. **수정 후 checklist.md 항목 자체 평가** (daily는 daily.md 체크리스트로 대체 — checklist.md의 구조·SEO 항목은 info 전용), 모두 PASS 시 final.md 확정.
 
 4. **수정 로그 1줄 코멘트로 파일 끝 추가**:
    ```html
